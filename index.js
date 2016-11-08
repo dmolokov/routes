@@ -8,14 +8,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/', upload.array(), function (req, res) {
-	if(Object.keys(req.body).length == 0)
-	{
-		res.sendStatus(404);
+	if(!req.headers['key'])	{
+		res.sendStatus(401);
 	}
 	else
 	{
-		res.json(req.body);
+		if(Object.keys(req.body).length == 0)
+		{
+			res.sendStatus(404);
+		}
+		else
+		{
+			res.json(req.body);
+		}
 	}
+});
+
+app.post('/', function (req, res) {
+	if(!req.headers['key'])	{
+		res.sendStatus(401);
+	}
+	console.log(req.headers);
 });
 
 app.get('/', function (req, res) {
