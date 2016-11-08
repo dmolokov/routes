@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/', upload.array(), function (req, res) {
-	if(!req.body || req.body.length == 0)
+	if(Object.keys(req.body).length == 0)
 	{
 		res.sendStatus(404);
 	}
@@ -37,6 +37,8 @@ app.all('/sub/:first_param/:second_param', function (req, res) {
 app.listen(3000, function () {
 	console.log('Example app listening on port 3000!');
 });
+
+
 
 //Домашнее задание
 //
