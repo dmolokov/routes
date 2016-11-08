@@ -24,13 +24,6 @@ app.post('/', upload.array(), function (req, res) {
 	}
 });
 
-app.post('/', function (req, res) {
-	if(!req.headers['key'])	{
-		res.sendStatus(401);
-	}
-	console.log(req.headers);
-});
-
 app.get('/', function (req, res) {
 	res.status(200).send('Hello Express.js');
 });
