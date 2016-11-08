@@ -14,8 +14,6 @@ app.post('/', upload.array(), function (req, res) {
 	}
 	else
 	{
-		console.log(req.body);
-		console.log(req.body.length);
 		res.json(req.body);
 	}
 });
